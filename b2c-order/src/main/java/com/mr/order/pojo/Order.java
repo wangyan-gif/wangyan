@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 @Table(name = "tb_order")
-public class Order {
+public class Order{
 
     @Id
     private Long orderId;// id
@@ -41,6 +41,16 @@ public class Order {
 
     @Transient
     private Integer status;
+    @Transient
+    private Date paymentTime;// 付款时间
+    @Transient
+    private Date consignTime;// 发货时间
+    @Transient
+    private Date endTime;// 交易结束时间
+    @Transient
+    private Date closeTime;// 交易关闭时间
+    @Transient
+    private Date commentTime;// 评价时间
 
     public Long getOrderId() {
         return orderId;
@@ -232,5 +242,45 @@ public class Order {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public Date getPaymentTime() {
+        return paymentTime;
+    }
+
+    public void setPaymentTime(Date paymentTime) {
+        this.paymentTime = paymentTime;
+    }
+
+    public Date getConsignTime() {
+        return consignTime;
+    }
+
+    public void setConsignTime(Date consignTime) {
+        this.consignTime = consignTime;
+    }
+
+    public Date getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Date endTime) {
+        this.endTime = endTime;
+    }
+
+    public Date getCloseTime() {
+        return closeTime;
+    }
+
+    public void setCloseTime(Date closeTime) {
+        this.closeTime = closeTime;
+    }
+
+    public Date getCommentTime() {
+        return commentTime;
+    }
+
+    public void setCommentTime(Date commentTime) {
+        this.commentTime = commentTime;
     }
 }

@@ -120,7 +120,7 @@ public class PayController {
         //修改订单状态
         orderService.updateStatus(Long.valueOf(orderId),2);
         //重定向到我的订单界面
-        response.sendRedirect("http://www.b2c.com/home-index.html");
+        response.sendRedirect("http://www.b2c.com/home.html");
 
         return null;
     };

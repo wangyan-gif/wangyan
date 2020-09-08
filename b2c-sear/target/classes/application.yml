@@ -8,7 +8,7 @@ spring:
   data:
     elasticsearch:
       cluster-name: elasticsearch
-      cluster-nodes: 106.55.155.55:9300
+      cluster-nodes: 192.168.153.135:9300
   jackson:
     default-property-inclusion: non_null # 配置json处理时忽略空值
   rabbitmq:

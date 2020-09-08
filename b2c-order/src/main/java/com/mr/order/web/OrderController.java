@@ -54,10 +54,10 @@ public class OrderController {
         }
     }
 
-    @GetMapping("order/{id}")
+    @GetMapping("getOrder")
     @ApiOperation(value = "根据订单编号查询，返回订单对象", notes = "查询订单")
     @ApiImplicitParam(name = "id", required = true, value = "订单的编号")
-    public ResponseEntity<Order> queryOrderById(@PathVariable("id") Long id){
+    public ResponseEntity<Order> queryOrderById(@RequestParam("id") Long id){
         Order order = this.orderService.queryById(id);
         if (order == null){
             //未找到 404

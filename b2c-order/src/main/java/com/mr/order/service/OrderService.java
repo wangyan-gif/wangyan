@@ -153,6 +153,46 @@ public class OrderService {
         // 查询订单状态
         OrderStatus status = this.statusMapper.selectByPrimaryKey(order.getOrderId());
         order.setStatus(status.getStatus());
+
+        //时间
+        if(status.getStatus()==2){
+            //付款时间
+            order.setPaymentTime(status.getPaymentTime());
+        }else if(status.getStatus()==3){
+            //付款时间
+            order.setPaymentTime(status.getPaymentTime());
+            //发货时间
+            order.setConsignTime(status.getConsignTime());
+        }else if(status.getStatus()==4){
+            //付款时间
+            order.setPaymentTime(status.getPaymentTime());
+            //发货时间
+            order.setConsignTime(status.getConsignTime());
+            //交易完成时间
+            order.setEndTime(status.getEndTime());
+
+        }else if(status.getStatus()==5){
+            //付款时间
+            order.setPaymentTime(status.getPaymentTime());
+            //发货时间
+            order.setConsignTime(status.getConsignTime());
+            //交易完成时间
+            order.setEndTime(status.getEndTime());
+            //交易关闭
+            order.setCloseTime(status.getCloseTime());
+        }else if(status.getStatus()==6){
+            //付款时间
+            order.setPaymentTime(status.getPaymentTime());
+            //发货时间
+            order.setConsignTime(status.getConsignTime());
+            //交易完成时间
+            order.setEndTime(status.getEndTime());
+            //交易关闭
+            order.setCloseTime(status.getCloseTime());
+            //评价
+            order.setCommentTime(status.getCommentTime());
+        }
+
         return order;
     }
 
@@ -189,10 +229,10 @@ public class OrderService {
         try {
             // 设置分页等其起始值，每页条数
             PageHelper.startPage(page, rows);
-
             // 创建查询条件用户id和状态，由于需要三表联查，sql注解拼接麻烦，所以采用了xml形式
             Page<Order> pageInfo = (Page<Order>) this.orderMapper.queryOrderList(userInfo.getId(), status);
             return new PageResult<>(pageInfo.getTotal(), pageInfo);
+
         } catch (Exception e) {
             logger.error("查询订单出错", e);
             return null;
